@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Mika_Music.Views.Login.CellPhoneLogin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:local="clr-namespace:Mika_Music.Views.Login"
+             mc:Ignorable="d" d:DesignWidth="800" Height="413">
+    <Grid VerticalAlignment="Top" Height="267">
+        <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" Text="使用手机号登录网易云" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" FontSize="36" FontFamily="Microsoft YaHei UI Light"/>
+        <TextBox x:Name="PhoneNumber_TB" HorizontalAlignment="Center" Margin="0,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Height="37"/>
+        <hc:PasswordBox ShowClearButton="True" ShowEyeButton="True" x:Name="PassWord_TB" HorizontalAlignment="Center" Margin="0,208,0,0" Width="238" Height="37" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="-190,0,0,0" Text="手机号：" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Margin="-200,188,0,0" Text="密码：" TextWrapping="Wrap" VerticalAlignment="Top"/>
+    </Grid>
+</UserControl>
