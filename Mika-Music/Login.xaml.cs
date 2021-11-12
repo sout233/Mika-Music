@@ -4,6 +4,7 @@ using Mika_Music.Models.Json.Status;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,12 +27,12 @@ namespace Mika_Music.Views.Login
             InitializeComponent();
 
             string url = "https://soutwyy.vercel.app/login/status";
-
             string getJson = HttpUitls.Get(url);
-
             AccountData rt = JsonConvert.DeserializeObject<AccountData>(getJson);
-            
-            if(rt.account!=null)
+
+            Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            if (cfa.AppSettings.Settings["isSkipLogin"].Value == "true")
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

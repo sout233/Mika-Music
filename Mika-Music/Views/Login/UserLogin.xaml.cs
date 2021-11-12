@@ -72,6 +72,7 @@ namespace Mika_Music.Views
                     Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                     cfa.AppSettings.Settings["userId"].Value = pf.userId.ToString();
                     cfa.AppSettings.Settings["nickName"].Value = pf.nickname;
+                    cfa.AppSettings.Settings["isSkipLogin"].Value = "true";
                     cfa.Save();
                     //MessageBox.Show(pf.nickname);
                     MainWindow mainWindow = new MainWindow();
@@ -111,6 +112,7 @@ namespace Mika_Music.Views
                     Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                     cfa.AppSettings.Settings["userId"].Value = pf.userId.ToString();
                     cfa.AppSettings.Settings["nickName"].Value = pf.nickname;
+                    cfa.AppSettings.Settings["isSkipLogin"].Value = "true";
                     cfa.Save();
 
                     MainWindow mainWindow = new MainWindow();
@@ -123,6 +125,17 @@ namespace Mika_Music.Views
                     HandyControl.Controls.MessageBox.Show("账号或密码错误！", "登录失败", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void Tag_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            cfa.AppSettings.Settings["isSkipLogin"].Value = "true";
+            cfa.Save();
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }

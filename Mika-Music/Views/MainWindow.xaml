@@ -7,23 +7,45 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Mika_Music"
         mc:Ignorable="d"
-        Title="Mika Music" Height="576" Width="993" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="Mika Music" Height="576" Width="993" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
+        <MediaElement Name="mediaElement1" LoadedBehavior="Manual"/>
         <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,24,22,0" CornerRadius="16" Height="47" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
-                <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="早上好！" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal"/>
+                <hc:SearchBar x:Name="SearchBox" Margin="472,9,190,8" KeyDown="SearchBox_KeyDown"/>
+                <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="Mika Music" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal"/>
                 <iconPacks:PackIconMaterial Kind="Account" Margin="784,0,0,0" VerticalAlignment="Center" Height="26" Width="19" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp" />
 
                 <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" />
                 <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" />
                 <iconPacks:PackIconCodicons Kind="ChromeMaximize" Margin="0,0,56,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp" />
-                <Button Style="{StaticResource ButtonIcon}" Content="Button" HorizontalAlignment="Left" Margin="720,0,0,0" Height="28" Width="28"/>
-                <Grid Margin="196,0,203,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000"></Grid>
+                <Grid Margin="106,0,484,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000"></Grid>
             </Grid>
         </Border>
-        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,86,22,83" CornerRadius="16">
+        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,86,22,133" CornerRadius="16">
             <Grid>
-                <ContentControl x:Name="Header" Grid.Row="0" />
+                <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,392" Visibility="Hidden"/>
+                <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="歌名" Width="150" DisplayMemberBinding="{Binding SongName}"/>
+                            <GridViewColumn Header="歌手" Width="90" DisplayMemberBinding="{Binding Artist}"/>
+                            <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding SongID}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Border>
+        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,0,22,10" CornerRadius="16" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="99" VerticalAlignment="Bottom">
+            <Grid>
+                <Slider x:Name="MusicSlider" Margin="111,60,110,17" ValueChanged="Slider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.01" MouseLeftButtonUp="MusicSlider_MouseLeftButtonUp" MouseLeftButtonDown="MusicSlider_MouseLeftButtonDown" PreviewMouseLeftButtonDown="MusicSlider_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="MusicSlider_PreviewMouseLeftButtonUp"></Slider>
+                <Border Effect="{StaticResource EffectShadow2}" CornerRadius="16" Margin="13,12,0,0" Background="#FFF0F0F0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top">
+                    <Image />
+                </Border>
+                <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="393"/>
+                <TextBlock x:Name="Artist_T" HorizontalAlignment="Left" Margin="111,40,0,0" Text="咕咕咕咕" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF636363"/>
+                <TextBlock x:Name="NowTime" HorizontalAlignment="Left" Margin="743,37,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
             </Grid>
         </Border>
 

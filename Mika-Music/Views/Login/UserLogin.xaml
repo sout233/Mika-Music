@@ -14,6 +14,7 @@
                 <ContentControl x:Name="ContentControl" HorizontalAlignment="Center" VerticalAlignment="Center" Height="371" Width="728"/>
                 <hc:Tag x:Name="ChangeModeTag" ShowCloseButton="False" Content="使用邮箱登录" HorizontalAlignment="Right" Margin="0,0,10,13" VerticalAlignment="Bottom" Width="143" Height="30" MouseLeftButtonUp="Tag_MouseLeftButtonUp"/>
                 <Button Style="{StaticResource ButtonDanger}" Content="登录(￣▽￣)&quot;" Margin="0,303,0,0" VerticalAlignment="Top" Width="153" Click="Button_Click" Height="34"/>
+                <hc:Tag ShowCloseButton="False" Content="跳过" HorizontalAlignment="Right" Margin="0,0,158,13" VerticalAlignment="Bottom" Width="68" Height="30" MouseLeftButtonUp="Tag_MouseLeftButtonUp_1"/>
             </Grid>
         </Border>
     </Grid>
