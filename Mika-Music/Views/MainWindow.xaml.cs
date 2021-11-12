@@ -123,10 +123,12 @@ namespace Mika_Music
 
                     if (rt.data[0].url != null)
                     {
+                        Line_T.Text = "线路1";
                         MusicPlay(rt.data[0].url);
                     }
                     else
                     {
+                        Line_T.Text = "线路2";
                         MusicPlay("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
                         //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -140,6 +142,7 @@ namespace Mika_Music
 
         private void MusicPlay(string url)
         {
+            PlayerController.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.ControllerPaus;
             try
             {
                 mediaElement1.Source = new Uri(url, UriKind.Absolute);
@@ -214,6 +217,20 @@ namespace Mika_Music
         {
             mediaElement1.Position = TimeSpan.FromSeconds(MusicSlider.Value);
             timer.Start();
+        }
+
+        private void PackIconEntypo_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if(PlayerController.Kind.ToString()== "ControllerPlay")
+            {
+                mediaElement1.Play();
+                PlayerController.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.ControllerPaus;
+            }
+            else
+            {
+                mediaElement1.Pause();
+                PlayerController.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.ControllerPlay;
+            }
         }
     }
 }
