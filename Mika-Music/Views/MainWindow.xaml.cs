@@ -29,6 +29,7 @@ namespace Mika_Music
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer = new DispatcherTimer();
+        private DispatcherTimer stimer = new DispatcherTimer();
 
         public MainWindow()
         {
@@ -79,9 +80,16 @@ namespace Mika_Music
             }
         }
 
+        private void Test()
+        {
+            Dispatcher.BeginInvoke((Action)(() => LoadingLine.Visibility = Visibility.Visible));
+            Thread.Sleep(3000);
+            Dispatcher.BeginInvoke((Action)(() => LoadingLine.Visibility = Visibility.Hidden));
+        }
+
         private void SearchSongs()
         {
-            Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate ()
+            Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
             {
                 listView.Items.Clear();
                 LoadingLine.Visibility = Visibility.Visible;
@@ -119,7 +127,8 @@ namespace Mika_Music
                     }
                     else
                     {
-                        HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MusicPlay("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
+                        //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 catch (Exception ex)
@@ -158,6 +167,14 @@ namespace Mika_Music
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+
+            stimer.Interval = TimeSpan.FromMilliseconds(500);
+            stimer.Tick += new EventHandler(stimer_Tick);
+        }
+
+        private void stimer_Tick(object sender, EventArgs e)
+        {
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -165,7 +182,7 @@ namespace Mika_Music
             //使播放进度条跟随播放时间移动
             MusicSlider.ToolTip = mediaElement1.Position.ToString().Substring(0, 8);
 
-            if(mediaElement1.NaturalDuration.HasTimeSpan)
+            if (mediaElement1.NaturalDuration.HasTimeSpan)
             {
                 MusicSlider.Maximum = (int)mediaElement1.NaturalDuration.TimeSpan.TotalSeconds;
                 MusicSlider.Value = (int)mediaElement1.Position.TotalSeconds;

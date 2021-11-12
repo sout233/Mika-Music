@@ -10,11 +10,11 @@
         Title="Mika Music" Height="576" Width="993" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <MediaElement Name="mediaElement1" LoadedBehavior="Manual"/>
-        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,24,22,0" CornerRadius="16" Height="47" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="21,10,21,0" CornerRadius="16" Height="47" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
-                <hc:SearchBar x:Name="SearchBox" Margin="472,9,190,8" KeyDown="SearchBox_KeyDown"/>
+                <hc:SearchBar x:Name="SearchBox" Margin="0,9,190,8" KeyDown="SearchBox_KeyDown" HorizontalAlignment="Right" Width="289"/>
                 <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="Mika Music" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal"/>
-                <iconPacks:PackIconMaterial Kind="Account" Margin="784,0,0,0" VerticalAlignment="Center" Height="26" Width="19" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp" />
+                <iconPacks:PackIconMaterial Kind="Account" Margin="0,0,149,0" VerticalAlignment="Center" Height="26" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp" HorizontalAlignment="Right" Width="16" />
 
                 <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" />
                 <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" />
@@ -22,10 +22,10 @@
                 <Grid Margin="106,0,484,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000"></Grid>
             </Grid>
         </Border>
-        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,86,22,133" CornerRadius="16">
+        <Border Effect="{StaticResource EffectShadow4}" Background="#FFEEEEEE" Margin="20,77,22,133" CornerRadius="16">
             <Grid>
-                <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,392" Visibility="Hidden"/>
-                <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick">
+                <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,0" Height="5" VerticalAlignment="Top" />
+                <ListView x:Name="listView" MouseDoubleClick="listView_MouseDoubleClick" Background="{x:Null}" BorderBrush="{x:Null}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="歌名" Width="150" DisplayMemberBinding="{Binding SongName}"/>
@@ -44,8 +44,7 @@
                 </Border>
                 <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="393"/>
                 <TextBlock x:Name="Artist_T" HorizontalAlignment="Left" Margin="111,40,0,0" Text="咕咕咕咕" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF636363"/>
-                <TextBlock x:Name="NowTime" HorizontalAlignment="Left" Margin="743,37,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
+                <TextBlock x:Name="NowTime" Margin="0,37,133,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" TextAlignment="Right"/>
             </Grid>
         </Border>
 
