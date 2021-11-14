@@ -3,6 +3,7 @@ using Mika_Music.Models;
 using Mika_Music.Models.Json;
 using Mika_Music.SongInfo;
 using Mika_Music.SongList;
+using Mika_Music.Song.Detail;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -132,6 +133,12 @@ namespace Mika_Music
                         MusicPlay("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
                         //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+
+                    string picurl = "https://soutwyy.vercel.app/song/detail?ids=" + emp.SongID;
+                    string picGetJson = HttpUitls.Get(picurl);
+                    SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
+
+                    SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl,UriKind.RelativeOrAbsolute));
                 }
                 catch (Exception ex)
                 {
@@ -231,6 +238,13 @@ namespace Mika_Music
                 mediaElement1.Pause();
                 PlayerController.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.ControllerPlay;
             }
+        }
+
+        private void PackIconMaterial_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            Downloader downloader = new Downloader();
+            downloader.SongUrl = mediaElement1.Source.ToString();
+            downloader.Show();
         }
     }
 }
