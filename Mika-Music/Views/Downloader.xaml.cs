@@ -1,4 +1,7 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading;
@@ -12,6 +15,8 @@ namespace Mika_Music
     public partial class Downloader : Window
     {
         public string SongUrl;
+        public string SongName;
+        public string SongArtist;
 
         public Downloader()
         {
@@ -25,24 +30,52 @@ namespace Mika_Music
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 PathBox.Text = dialog.FileName;
+                Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                cfa.AppSettings.Settings["SetFilePath"].Value = PathBox.Text;
+                cfa.Save();
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (PathBox.Text != "" && System.IO.Directory.Exists(PathBox.Text))
+            if (PathBox.Text != "" && Directory.Exists(PathBox.Text))
             {
-                WebRequest request = WebRequest.Create(SongUrl);
+                DownloadFileFromServer();
+            }
+            else if(PathBox.Text== Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download"))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download"));
+                directoryInfo.Create();
+                DownloadFileFromServer();
+            }
+            else
+                HandyControl.Controls.MessageBox.Show("请确保储存位置正确", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public void DownloadFileFromServer()
+        {
+            string serverFilePath = SongUrl;
+            if (!Directory.Exists(PathBox.Text))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(PathBox.Text);
+                directoryInfo.Create();
+            }
+            string targetPath = PathBox.Text + "\\" + SongName + " - " + SongArtist + ".mp3";
+            DownloadFile(serverFilePath, targetPath);
+        }
+
+        public void DownloadFile(string serverFilePath, string targetPath)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(serverFilePath);
                 WebResponse respone = request.GetResponse();
-                pbDown.Maximum = respone.ContentLength;
-                string path = PathBox.Text;
-                ThreadPool.QueueUserWorkItem((obj) =>
+                Stream netStream = respone.GetResponseStream();
+                using (Stream fileStream = new FileStream(targetPath, FileMode.Create))
                 {
-                    Stream netStream = respone.GetResponseStream();
-                    Stream fileStream = new FileStream(path, FileMode.Create);
                     byte[] read = new byte[1024];
-                    long progressBarValue = 0;
                     int realReadLen = netStream.Read(read, 0, read.Length);
+                    long progressBarValue = 0;
                     while (realReadLen > 0)
                     {
                         fileStream.Write(read, 0, realReadLen);
@@ -52,17 +85,30 @@ namespace Mika_Music
                     }
                     netStream.Close();
                     fileStream.Close();
-
-                }, null);
+                }
             }
-            else
-                HandyControl.Controls.MessageBox.Show("请确保储存位置正确", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            catch(Exception ex)
+            {
+                HandyControl.Controls.MessageBox.Show("错误，但是已经将链接复制到剪贴板"+SongUrl, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Clipboard.SetDataObject(SongUrl);
+                //System.Diagnostics.Process.Start("explorer.exe", SongUrl);
+            }
         }
 
         public delegate void ProgressBarSetter(double value);
         public void SetProgressBar(double value)
         {
             pbDown.Value = value;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            if (cfa.AppSettings.Settings["SetFilePath"].Value == "null")
+            {
+                PathBox.Text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download");
+            }
         }
     }
 }

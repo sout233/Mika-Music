@@ -139,6 +139,8 @@ namespace Mika_Music
                     SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
 
                     SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl,UriKind.RelativeOrAbsolute));
+
+
                 }
                 catch (Exception ex)
                 {
@@ -244,6 +246,8 @@ namespace Mika_Music
         {
             Downloader downloader = new Downloader();
             downloader.SongUrl = mediaElement1.Source.ToString();
+            downloader.SongName = SongName_T.Text;
+            downloader.SongArtist = Artist_T.Text;
             downloader.Show();
         }
     }
