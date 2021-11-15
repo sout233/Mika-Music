@@ -22,6 +22,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Net;
+using Mika_Music.Views;
 
 namespace Mika_Music
 {
@@ -33,9 +34,15 @@ namespace Mika_Music
         private DispatcherTimer timer = new DispatcherTimer();
         private DispatcherTimer stimer = new DispatcherTimer();
 
+        
+        SearchListView SearchListView = new SearchListView();
+        ListView slv;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            slv = SearchListView.listView;
         }
 
         private void PackIconMicrons_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -91,72 +98,24 @@ namespace Mika_Music
 
         private void SearchSongs()
         {
-            Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+            Dispatcher.Invoke(new Action(() => slv.Items.Clear()));
+            Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Visible));
+
+            string url="";
+            Dispatcher.Invoke(new Action(() => url = "https://soutwyy.vercel.app/search?keywords=" + SearchBox.Text));
+            string getJson = HttpUitls.Get(url);
+            Models.Json.RootObject rt = JsonConvert.DeserializeObject<Models.Json.RootObject>(getJson);
+
+            for (int i = 0; i < 10; i++)
             {
-                listView.Items.Clear();
-                LoadingLine.Visibility = Visibility.Visible;
-
-                string url = "https://soutwyy.vercel.app/search?keywords=" + SearchBox.Text;
-                string getJson = HttpUitls.Get(url);
-                Models.Json.RootObject rt = JsonConvert.DeserializeObject<Models.Json.RootObject>(getJson);
-
-                for (int i = 0; i < rt.result.songs.Count; i++)
-                {
-                    Thread.Sleep(200);
-                    listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
-                }
-
-                LoadingLine.Visibility = Visibility.Hidden;
-            });
-        }
-
-        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Emp emp = listView.SelectedItem as Emp;
-            if (emp != null && emp is Emp)
-            {
-                try
-                {
-                    string url = "https://soutwyy.vercel.app/song/url?id=" + emp.SongID;
-                    string getJson = HttpUitls.Get(url);
-                    SongInfoRoot rt = JsonConvert.DeserializeObject<SongInfoRoot>(getJson);
-                    SongName_T.Text = emp.SongName;
-                    Artist_T.Text = emp.Artist;
-
-                    if (rt.data[0].url != null)
-                    {
-                        Line_T.Text = "线路1";
-                        MusicPlay(rt.data[0].url);
-                    }
-                    else
-                    {
-                        Line_T.Text = "线路2";
-
-                        HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
-                        httpReq.AllowAutoRedirect = false;
-
-                        HttpWebResponse httpRes = (HttpWebResponse)httpReq.GetResponse();
-                        string newUrl = httpRes.Headers["Location"];
-                        
-                        httpRes.Close();
-
-                        MusicPlay(newUrl);
-                        //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-
-                    string picurl = "https://soutwyy.vercel.app/song/detail?ids=" + emp.SongID;
-                    string picGetJson = HttpUitls.Get(picurl);
-                    SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
-
-                    SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl,UriKind.RelativeOrAbsolute));
-
-
-                }
-                catch (Exception ex)
-                {
-                    HandyControl.Controls.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                Thread.Sleep(200);
+                Dispatcher.Invoke(new Action(() =>
+                slv.Items.Add(new SongList.Emp 
+                { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id })));
+                //listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
             }
+
+            Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Hidden));
         }
 
         private void MusicPlay(string url)
@@ -186,6 +145,8 @@ namespace Mika_Music
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            ContentControl.Content = SearchListView;
+
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
@@ -259,6 +220,61 @@ namespace Mika_Music
             downloader.SongName = SongName_T.Text;
             downloader.SongArtist = Artist_T.Text;
             downloader.Show();
+        }
+
+        private void ContentControl_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ContentControl.Content == SearchListView)
+                GetSongInfo();
+        }
+
+        void GetSongInfo()
+        {
+            Emp emp = slv.SelectedItem as Emp;
+            if (emp != null && emp is Emp)
+            {
+                try
+                {
+                    string url = "https://soutwyy.vercel.app/song/url?id=" + emp.SongID;
+                    string getJson = HttpUitls.Get(url);
+                    SongInfoRoot rt = JsonConvert.DeserializeObject<SongInfoRoot>(getJson);
+                    SongName_T.Text = emp.SongName;
+                    Artist_T.Text = emp.Artist;
+
+                    if (rt.data[0].url != null)
+                    {
+                        Line_T.Text = "线路1";
+                        MusicPlay(rt.data[0].url);
+                    }
+                    else
+                    {
+                        Line_T.Text = "线路2";
+
+                        HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
+                        httpReq.AllowAutoRedirect = false;
+
+                        HttpWebResponse httpRes = (HttpWebResponse)httpReq.GetResponse();
+                        string newUrl = httpRes.Headers["Location"];
+
+                        httpRes.Close();
+
+                        MusicPlay(newUrl);
+                        //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    string picurl = "https://soutwyy.vercel.app/song/detail?ids=" + emp.SongID;
+                    string picGetJson = HttpUitls.Get(picurl);
+                    SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
+
+                    SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl, UriKind.RelativeOrAbsolute));
+
+
+                }
+                catch (Exception ex)
+                {
+                    HandyControl.Controls.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
 }
