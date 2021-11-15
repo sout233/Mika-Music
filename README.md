@@ -1,9 +1,14 @@
-# Mika-Music
-使用WPF编写的第三方网易云客户端
-
-
-  ![GitHub all releases](https://img.shields.io/github/downloads/sout233/Mika-Music/total)
-  ![GitHub all releases](https://img.shields.io/badge/.net-5.0-blue)
-  ![GitHub branch checks state](https://img.shields.io/github/checks-status/sout233/Mika-Music/master)
-  [![GitHub license](https://img.shields.io/github/license/sout233/Mika-Music)](https://github.com/sout233/Mika-Music)
-  [![GitHub stars](https://img.shields.io/github/stars/sout233/Mika-Music)](https://github.com/sout233/Mika-Music/stargazers)
+<p align="center">
+  <a>
+    <img src="./" alt="Icon" width=64 height=64>
+  </a>
+  <h1 align="center">Mika Music</h2>
+  <h3 align="center">使用WPF编写的第三方网易云客户端</h3>
+  <p align="center">
+  <a href="https://github.com/sout233/Mika-Music/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/sout233/Mika-Music"></a>
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/sout233/Mika-Music">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/sout233/Mika-Music">
+  <img alt="Packagist License" src="https://img.shields.io/packagist/l/sout233/Mika-Music">
+  </p>
+</p>
+  
