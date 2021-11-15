@@ -1,6 +1,6 @@
 <p align="center">
   <a>
-    <img src="./mika-music-icon.png" alt="Icon" width=140 height=128>
+    <img src="./mika-music-icon.png" alt="Icon" width=143 height=128>
   </a>
   <h1 align="center">Mika Music</h2>
   <h3 align="center">使用WPF编写的第三方网易云客户端</h3>
