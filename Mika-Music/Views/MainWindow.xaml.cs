@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Net;
 
 namespace Mika_Music
 {
@@ -130,7 +131,16 @@ namespace Mika_Music
                     else
                     {
                         Line_T.Text = "线路2";
-                        MusicPlay("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
+
+                        HttpWebRequest httpReq = (HttpWebRequest)WebRequest.Create("https://music.163.com/song/media/outer/url?id=" + emp.SongID + ".mp3");
+                        httpReq.AllowAutoRedirect = false;
+
+                        HttpWebResponse httpRes = (HttpWebResponse)httpReq.GetResponse();
+                        string newUrl = httpRes.Headers["Location"];
+                        
+                        httpRes.Close();
+
+                        MusicPlay(newUrl);
                         //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 

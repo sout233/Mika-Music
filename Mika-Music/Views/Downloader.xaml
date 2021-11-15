@@ -6,18 +6,19 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Mika_Music"
         mc:Ignorable="d"
-        Title="Downloader" Height="310" Width="669" MinHeight="290" MinWidth="660" Loaded="Window_Loaded">
+        Title="Mika Music · 下载" Height="310" Width="669" MinHeight="290" MinWidth="660" Loaded="Window_Loaded" Icon="/Views/mika-music-icon.png">
     <Grid>
         <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,77,22,23" CornerRadius="16">
             <Grid>
-                <TextBlock HorizontalAlignment="Left" Margin="25,28,0,0" Text="Music" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16"/>
+                <TextBlock x:Name="SongName_T" HorizontalAlignment="Left" Margin="25,18,0,0" Text="Music" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
                 <ProgressBar x:Name="pbDown" Height="9" Margin="25,78,33,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="PathBox" Margin="25,0,0,22" HorizontalAlignment="Left" Width="174" Height="31" VerticalAlignment="Bottom"/>
                 <Button Style="{StaticResource ButtonDanger}" Content="下载" HorizontalAlignment="Right" Margin="0,0,33,22" VerticalAlignment="Bottom" Height="30" Width="89" Click="Button_Click_1"/>
                 <Button Content="选择下载位置" HorizontalAlignment="Left" Margin="204,0,0,23" VerticalAlignment="Bottom" Width="95" Click="Button_Click" Height="30"/>
+                <TextBlock x:Name="ArtistName_T" HorizontalAlignment="Left" Margin="25,39,0,0" Text="Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
             </Grid>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="20,15,0,0" Text="下载管理器" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="36"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,15,0,0" Text="下载管理器" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="30"/>
 
 
     </Grid>

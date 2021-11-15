@@ -89,8 +89,9 @@ namespace Mika_Music
             }
             catch(Exception ex)
             {
-                HandyControl.Controls.MessageBox.Show("错误，但是已经将链接复制到剪贴板"+SongUrl, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                HandyControl.Controls.MessageBox.Show("错误，但是已经将链接复制到剪贴板："+SongUrl, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 Clipboard.SetDataObject(SongUrl);
+                HandyControl.Controls.MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 //System.Diagnostics.Process.Start("explorer.exe", SongUrl);
             }
         }
@@ -109,6 +110,9 @@ namespace Mika_Music
             {
                 PathBox.Text = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Download");
             }
+
+            SongName_T.Text = SongName;
+            ArtistName_T.Text = SongArtist;
         }
     }
 }

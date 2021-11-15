@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\mika-music-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.2.0" />
     <PackageReference Include="MahApps.Metro.IconPacks.Codicons" Version="4.11.0" />
     <PackageReference Include="MahApps.Metro.IconPacks.Entypo" Version="4.11.0" />
@@ -16,6 +20,10 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Vlc.DotNet.Core" Version="3.1.0" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\mika-music-icon.png" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Mika_Music"
         mc:Ignorable="d"
-        Title="Mika Music" Height="576" Width="993" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Mika Music" Height="576" Width="993" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="/Views/mika-music-icon.png">
     <Window.Resources>
         <WindowChrome x:Key="WindowChromeKey">
             <WindowChrome.ResizeBorderThickness>

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mika_Music.Views"
         mc:Ignorable="d"
-        Title="UserLogin" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="UserLogin" Height="450" Width="800" Loaded="Window_Loaded" Icon="/Views/mika-music-icon.png">
     <Grid>
         <hc:LoadingLine x:Name="LoadingLine" Margin="-1,10,1,420" Visibility="Hidden"/>
         <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="25,20,27,24" CornerRadius="16">
