@@ -11,7 +11,7 @@
         <ListView x:Name="listView" Background="{x:Null}" BorderBrush="{x:Null}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="歌名" Width="150" DisplayMemberBinding="{Binding SongName}"/>
+                    <GridViewColumn Header="歌名" Width="600" DisplayMemberBinding="{Binding SongName}"/>
                     <GridViewColumn Header="歌手" Width="150" DisplayMemberBinding="{Binding Artist}"/>
                     <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding SongID}"/>
                 </GridView>

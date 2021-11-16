@@ -32,22 +32,22 @@
                 <Grid>
                     <hc:SearchBar x:Name="SearchBox" Margin="0,9,190,8" KeyDown="SearchBox_KeyDown" HorizontalAlignment="Right" Width="289"/>
                     <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="Mika Music" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal"/>
-                    <iconPacks:PackIconMaterial Kind="Download" Margin="0,0,143,0" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp_1" />
-                    <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" />
-                    <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" />
-                    <iconPacks:PackIconCodicons Kind="ChromeMaximize" Margin="0,0,56,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp" />
+                    <iconPacks:PackIconMaterial Kind="Download" Margin="0,0,143,0" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp_1" Cursor="Hand" />
+                    <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" Cursor="Hand" />
+                    <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" Cursor="Hand" />
+                    <iconPacks:PackIconCodicons Kind="ChromeMaximize" Margin="0,0,56,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp" Cursor="Hand" />
                     <Grid Margin="106,0,484,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000"></Grid>
                 </Grid>
             </Border>
             <Border Effect="{StaticResource EffectShadow4}" Background="#FFEEEEEE" Margin="20,77,22,133" CornerRadius="16">
                 <Grid>
-                    <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,0" Height="5" VerticalAlignment="Top" />
+                    <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,0" Height="5" Visibility="Hidden" VerticalAlignment="Top" />
                     <ContentControl x:Name="ContentControl" PreviewMouseDoubleClick="ContentControl_PreviewMouseDoubleClick"/>
                 </Grid>
             </Border>
             <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,0,22,10" CornerRadius="16" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="99" VerticalAlignment="Bottom">
                 <Grid>
-                    <iconPacks:PackIconEntypo x:Name="PlayerController" Kind="ControllerPlay" Margin="0,0,50,20" PreviewMouseLeftButtonUp="PackIconEntypo_PreviewMouseLeftButtonUp" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="16" Background="#00000000" />
+                    <iconPacks:PackIconEntypo x:Name="PlayerController" Kind="ControllerPlay" Margin="0,0,50,20" PreviewMouseLeftButtonUp="PackIconEntypo_PreviewMouseLeftButtonUp" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="16" Background="#00000000" Cursor="Hand" />
                     <Slider x:Name="MusicSlider" Margin="111,60,110,17" ValueChanged="Slider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.01" MouseLeftButtonUp="MusicSlider_MouseLeftButtonUp" MouseLeftButtonDown="MusicSlider_MouseLeftButtonDown" PreviewMouseLeftButtonDown="MusicSlider_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="MusicSlider_PreviewMouseLeftButtonUp"></Slider>
                     <Border Effect="{StaticResource EffectShadow2}" Background="#FFEEEEEE" CornerRadius="16" Margin="13,12,0,0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top"></Border>
                     <Border Effect="{StaticResource EffectShadow2}" CornerRadius="16" Margin="13,12,0,0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top">

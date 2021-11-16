@@ -34,9 +34,10 @@ namespace Mika_Music
         private DispatcherTimer timer = new DispatcherTimer();
         private DispatcherTimer stimer = new DispatcherTimer();
 
-        
+        MusicRecommend MusicRecommend = new MusicRecommend();
         SearchListView SearchListView = new SearchListView();
         ListView slv;
+        SongPlane SongPlane = new SongPlane();
 
         public MainWindow()
         {
@@ -84,6 +85,7 @@ namespace Mika_Music
         {
             if (e.Key == Key.Enter && SearchBox.Text != "")
             {
+                ContentControl.Content = SearchListView;
                 Thread thread = new Thread(new ThreadStart(SearchSongs));
                 thread.Start();
             }
@@ -145,7 +147,7 @@ namespace Mika_Music
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ContentControl.Content = SearchListView;
+            ContentControl.Content = MusicRecommend;
 
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += new EventHandler(timer_Tick);
@@ -268,7 +270,7 @@ namespace Mika_Music
 
                     SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl, UriKind.RelativeOrAbsolute));
 
-
+                    
                 }
                 catch (Exception ex)
                 {
