@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         
-        <ListView x:Name="listView" Background="{x:Null}" BorderBrush="{x:Null}">
+        <ListView x:Name="listView" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="歌名" Width="600" DisplayMemberBinding="{Binding SongName}"/>

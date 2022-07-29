@@ -6,19 +6,91 @@
         xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:local="clr-namespace:Mika_Music"
         mc:Ignorable="d"
-        Title="Mika Music · 下载" Height="310" Width="669" MinHeight="290" MinWidth="660" Loaded="Window_Loaded" Icon="/Views/mika-music-icon.png">
+        Title="Mika Music · 下载" Height="310" Width="669" MinHeight="290" MinWidth="660" Loaded="Window_Loaded" Icon="/Views/mika-music-icon.png" Background="#FFF1F4FF">
     <Grid>
-        <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,77,22,23" CornerRadius="16">
+        <Border Effect="{StaticResource EffectShadow4}" Background="#FFF4FAFF" Margin="20,77,22,23" CornerRadius="16">
             <Grid>
-                <TextBlock x:Name="SongName_T" HorizontalAlignment="Left" Margin="25,18,0,0" Text="Music" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20"/>
-                <ProgressBar x:Name="pbDown" Height="9" Margin="25,78,33,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="PathBox" Margin="25,0,0,22" HorizontalAlignment="Left" Width="174" Height="31" VerticalAlignment="Bottom"/>
-                <Button Style="{StaticResource ButtonDanger}" Content="下载" HorizontalAlignment="Right" Margin="0,0,33,22" VerticalAlignment="Bottom" Height="30" Width="89" Click="Button_Click_1"/>
-                <Button Content="选择下载位置" HorizontalAlignment="Left" Margin="204,0,0,23" VerticalAlignment="Bottom" Width="95" Click="Button_Click" Height="30"/>
-                <TextBlock x:Name="ArtistName_T" HorizontalAlignment="Left" Margin="25,39,0,0" Text="Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
+                <TextBlock x:Name="SongName_T" HorizontalAlignment="Left" Margin="25,18,0,0" Text="Music" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Foreground="#FF6A97EF"/>
+                <ProgressBar x:Name="pbDown" Height="9" Margin="25,78,33,0" VerticalAlignment="Top" BorderBrush="#FF6A97EF" FontSize="10">
+                    <ProgressBar.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-90" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFDFEEFF"/>
+                            <GradientStop Color="#FFC9F4FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ProgressBar.Background>
+                    <ProgressBar.Foreground>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#FF326CF3"/>
+                            <GradientStop Color="#FF324FF3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ProgressBar.Foreground>
+                </ProgressBar>
+                <TextBox x:Name="PathBox" Margin="25,0,0,22" HorizontalAlignment="Left" Width="174" Height="31" VerticalAlignment="Bottom" BorderBrush="#FFD3E2FF">
+                    <TextBox.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-87" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FF1140FF"/>
+                            <GradientStop Color="#FF2694DA" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBox.Foreground>
+                    <TextBox.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-88" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFEDF3FF" Offset="0"/>
+                            <GradientStop Color="#FFE3F3FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBox.Background>
+                </TextBox>
+                <Button Style="{StaticResource ButtonDanger}" Content="下载" HorizontalAlignment="Right" Margin="0,0,33,22" VerticalAlignment="Bottom" Height="30" Width="89" Click="Button_Click_1">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#FF3354DB"/>
+                            <GradientStop Color="#FF337BDB" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Content="选择下载位置" HorizontalAlignment="Left" Margin="204,0,0,23" VerticalAlignment="Bottom" Width="95" Click="Button_Click" Height="30" Foreground="#FF6A97EF" BorderBrush="#FFD3E2FF">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad">
+                            <LinearGradientBrush.RelativeTransform>
+                                <TransformGroup>
+                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                    <RotateTransform Angle="-88" CenterX="0.5" CenterY="0.5"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </LinearGradientBrush.RelativeTransform>
+                            <GradientStop Color="#FFEAF5FF"/>
+                            <GradientStop Color="#FFF4FAFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="ArtistName_T" HorizontalAlignment="Left" Margin="25,39,0,0" Text="Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Normal" Foreground="#FF6A97EF"/>
             </Grid>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="20,15,0,0" Text="下载管理器" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="30"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,15,0,0" Text="下载管理器" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Microsoft YaHei UI Light" FontSize="30" Foreground="#FF6A7EEF"/>
 
 
     </Grid>

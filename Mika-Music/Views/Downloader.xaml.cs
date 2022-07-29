@@ -78,10 +78,10 @@ namespace Mika_Music
                     long progressBarValue = 0;
                     while (realReadLen > 0)
                     {
-                        fileStream.Write(read, 0, realReadLen);
+                        Dispatcher.Invoke(new Action(() => fileStream.Write(read, 0, realReadLen)));
                         progressBarValue += realReadLen;
-                        pbDown.Dispatcher.BeginInvoke(new ProgressBarSetter(SetProgressBar), progressBarValue);
-                        realReadLen = netStream.Read(read, 0, read.Length);
+                        Dispatcher.Invoke(new Action(() => pbDown.Dispatcher.BeginInvoke(new ProgressBarSetter(SetProgressBar), progressBarValue)));
+                        Dispatcher.Invoke(new Action(() => realReadLen = netStream.Read(read, 0, read.Length)));
                     }
                     netStream.Close();
                     fileStream.Close();

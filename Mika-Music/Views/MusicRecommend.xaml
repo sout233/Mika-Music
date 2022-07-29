@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="184" Width="498">
-            <TextBlock Text="欢迎来到Mika Music" TextWrapping="Wrap" FontSize="36" HorizontalAlignment="Center" Margin="0,56,0,0" Height="49" VerticalAlignment="Top"/>
-            <TextBlock Text="点击上方搜索栏，输入你要搜索的内容，然后回车" TextWrapping="Wrap" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,37" Height="37" VerticalAlignment="Bottom"/>
+            <TextBlock Text="欢迎来到Mika Music" TextWrapping="Wrap" FontSize="36" HorizontalAlignment="Center" Margin="0,56,0,0" Height="49" VerticalAlignment="Top" Foreground="#FF6472EA"/>
+            <TextBlock Text="点击上方搜索栏，输入你要搜索的内容，然后回车" TextWrapping="Wrap" FontSize="18" HorizontalAlignment="Center" Margin="0,0,0,37" Height="37" VerticalAlignment="Bottom" Foreground="#FF9399F7"/>
         </Grid>
 
     </Grid>

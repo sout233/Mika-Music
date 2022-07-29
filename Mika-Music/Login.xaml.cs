@@ -25,11 +25,11 @@ namespace Mika_Music.Views.Login
         public Login()
         {
             InitializeComponent();
-
+            /*
             string url = "https://soutwyy.vercel.app/login/status";
             string getJson = HttpUitls.Get(url);
             AccountData rt = JsonConvert.DeserializeObject<AccountData>(getJson);
-
+            */
             Configuration cfa = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             if (cfa.AppSettings.Settings["isSkipLogin"].Value == "true")

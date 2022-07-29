@@ -24,7 +24,7 @@ namespace Mika_Music.Views
         public SongPlane()
         {
             InitializeComponent();
-
+            /*
             Lrc lrc = Lrc.InitLrc("C:\\Users\\sout\\Desktop\\111.lrc");
             Dictionary<double, string> openWith = lrc.LrcWord;
             LrcBox.IsReadOnly = true;
@@ -41,6 +41,7 @@ namespace Mika_Music.Views
                 LrcBox.Document = doc;
                 LrcBox.ScrollToEnd();
             }
+            */
         }
     }
 }

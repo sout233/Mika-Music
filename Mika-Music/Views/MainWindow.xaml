@@ -25,31 +25,31 @@
 
         </wpfShell:WindowChrome>
     </wpfShell:WindowChrome.WindowChrome>
-    <Border CornerRadius="16" Background="#E5FFFFFF">
+    <Border CornerRadius="16" Background="#E5F1F4FF">
         <Grid>
             <MediaElement Name="mediaElement1" LoadedBehavior="Manual"/>
-            <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="21,10,21,0" CornerRadius="16" Height="47" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Border Effect="{StaticResource EffectShadow4}" Background="#FFF0F2FF" Margin="15,15,15,0" CornerRadius="16" Height="47" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown">
                 <Grid>
-                    <hc:SearchBar x:Name="SearchBox" Margin="0,9,190,8" KeyDown="SearchBox_KeyDown" HorizontalAlignment="Right" Width="289"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="Mika Music" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal"/>
-                    <iconPacks:PackIconMaterial Kind="Download" Margin="0,0,143,0" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp_1" Cursor="Hand" />
-                    <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" Cursor="Hand" />
-                    <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" Cursor="Hand" />
-                    <iconPacks:PackIconCodicons Kind="ChromeMaximize" Margin="0,0,56,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp" Cursor="Hand" />
+                    <hc:SearchBar x:Name="SearchBox" Margin="0,9,190,8" KeyDown="SearchBox_KeyDown" HorizontalAlignment="Right" Width="289" Background="#FFF7F8FF" Foreground="#FF384EC7" SelectionBrush="#FF0070D7"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="21,0,0,0" Text="Mika Music" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="Source Han Sans CN Regular" FontSize="20" FontWeight="Normal" Foreground="#FF7CA5E8"/>
+                    <iconPacks:PackIconMaterial Kind="Download" Margin="0,0,143,0" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" MouseLeftButtonUp="PackIconMaterial_MouseLeftButtonUp_1" Cursor="Hand" Foreground="#FF7CA5E8" />
+                    <iconPacks:PackIconCodicons Kind="ChromeMinimize" Margin="0,0,94,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp_1" Cursor="Hand" Foreground="#FF7CA5E8" />
+                    <iconPacks:PackIconMicrons Kind="Cancel" Margin="0,0,22,0" VerticalAlignment="Center" Width="10" MouseLeftButtonUp="PackIconMicrons_MouseLeftButtonUp" HorizontalAlignment="Right" Background="#00000000" Cursor="Hand" Foreground="#FF7CA5E8" />
+                    <iconPacks:PackIconCodicons Kind="ChromeMaximize" Margin="0,0,56,0" VerticalAlignment="Center" Width="11" HorizontalAlignment="Right" Background="#00000000" MouseLeftButtonUp="PackIconCodicons_MouseLeftButtonUp" Cursor="Hand" Foreground="#FF7CA5E8" />
                     <Grid Margin="106,0,484,0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#00000000"></Grid>
                 </Grid>
             </Border>
-            <Border Effect="{StaticResource EffectShadow4}" Background="#FFEEEEEE" Margin="20,77,22,133" CornerRadius="16">
+            <Border Effect="{StaticResource EffectShadow4}" Background="#FFE3E6F1" Margin="15,77,15,133" CornerRadius="16">
                 <Grid>
                     <hc:LoadingLine x:Name="LoadingLine" Margin="0,10,0,0" Height="5" Visibility="Hidden" VerticalAlignment="Top" />
                     <ContentControl x:Name="ContentControl" PreviewMouseDoubleClick="ContentControl_PreviewMouseDoubleClick"/>
                 </Grid>
             </Border>
-            <Border Effect="{StaticResource EffectShadow4}" Background="White" Margin="20,0,22,10" CornerRadius="16" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="99" VerticalAlignment="Bottom">
+            <Border Effect="{StaticResource EffectShadow4}" Background="#FFF4FAFF" Margin="15,0,15,15" CornerRadius="16" MouseLeftButtonDown="Border_MouseLeftButtonDown" Height="99" VerticalAlignment="Bottom">
                 <Grid>
-                    <iconPacks:PackIconEntypo x:Name="PlayerController" Kind="ControllerPlay" Margin="0,0,50,20" PreviewMouseLeftButtonUp="PackIconEntypo_PreviewMouseLeftButtonUp" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="16" Background="#00000000" Cursor="Hand" />
-                    <Slider x:Name="MusicSlider" Margin="111,60,110,17" ValueChanged="Slider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.01" MouseLeftButtonUp="MusicSlider_MouseLeftButtonUp" MouseLeftButtonDown="MusicSlider_MouseLeftButtonDown" PreviewMouseLeftButtonDown="MusicSlider_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="MusicSlider_PreviewMouseLeftButtonUp"></Slider>
-                    <Border Effect="{StaticResource EffectShadow2}" Background="#FFEEEEEE" CornerRadius="16" Margin="13,12,0,0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top"></Border>
+                    <iconPacks:PackIconEntypo x:Name="PlayerController" Kind="ControllerPlay" Margin="0,0,50,20" PreviewMouseLeftButtonUp="PackIconEntypo_PreviewMouseLeftButtonUp" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="16" Width="16" Background="#00000000" Cursor="Hand" Foreground="#FF7CA5E8" />
+                    <Slider x:Name="MusicSlider" Margin="111,60,110,17" ValueChanged="Slider_ValueChanged" Maximum="1" LargeChange="0.1" SmallChange="0.01" MouseLeftButtonUp="MusicSlider_MouseLeftButtonUp" MouseLeftButtonDown="MusicSlider_MouseLeftButtonDown" PreviewMouseLeftButtonDown="MusicSlider_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="MusicSlider_PreviewMouseLeftButtonUp" Foreground="#FFF53D3D"></Slider>
+                    <Border Effect="{StaticResource EffectShadow2}" Background="#FFE8EDFB" CornerRadius="16" Margin="13,12,0,0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top"></Border>
                     <Border Effect="{StaticResource EffectShadow2}" CornerRadius="16" Margin="13,12,0,0" HorizontalAlignment="Left" Width="75" Height="75" VerticalAlignment="Top">
                         <Border.Background>
                             <ImageBrush x:Name="SongPic"/>
@@ -57,10 +57,25 @@
                     </Border>
 
 
-                    <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="393"/>
-                    <TextBlock x:Name="Artist_T" HorizontalAlignment="Left" Margin="111,40,0,0" Text="咕咕咕咕" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF636363"/>
-                    <TextBlock x:Name="NowTime" Margin="0,37,133,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" TextAlignment="Right"/>
-                    <TextBlock x:Name="Line_T" Margin="0,21,133,0" Text="线路1" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" Foreground="#FF7984CD" HorizontalAlignment="Right" Width="44"/>
+                    <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="393" Foreground="#FF6E92EA"/>
+                    <TextBlock x:Name="Artist_T" HorizontalAlignment="Left" Margin="111,40,0,0" Text="咕咕咕咕" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF7CA5E8"/>
+                    <TextBlock x:Name="NowTime" Margin="0,37,133,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" TextAlignment="Right" Foreground="#FF7CA5E8"/>
+                    <TextBlock x:Name="Line_T" Margin="0,21,133,0" Text="线路1" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="44">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <LinearGradientBrush.RelativeTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                        <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                                        <RotateTransform Angle="-90" CenterX="0.5" CenterY="0.5"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </LinearGradientBrush.RelativeTransform>
+                                <GradientStop Color="#FF70C7FF"/>
+                                <GradientStop Color="#FF4AD4ED" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
                 </Grid>
             </Border>
 

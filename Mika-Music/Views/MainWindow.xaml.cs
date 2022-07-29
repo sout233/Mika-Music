@@ -111,11 +111,10 @@ namespace Mika_Music
             for (int i = 0; i < 10; i++)
             {
                 Thread.Sleep(200);
-                Dispatcher.Invoke(new Action(() =>
-                slv.Items.Add(new SongList.Emp 
+                Dispatcher.Invoke(new Action(() => slv.Items.Add(new SongList.Emp
                 { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id })));
-                //listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
-            }
+            //listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
+        }
 
             Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Hidden));
         }
@@ -217,11 +216,18 @@ namespace Mika_Music
 
         private void PackIconMaterial_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
         {
-            Downloader downloader = new Downloader();
-            downloader.SongUrl = mediaElement1.Source.ToString();
-            downloader.SongName = SongName_T.Text;
-            downloader.SongArtist = Artist_T.Text;
-            downloader.Show();
+            if (mediaElement1.Source != null)
+            {
+                Downloader downloader = new Downloader();
+                downloader.SongUrl = mediaElement1.Source.ToString();
+                downloader.SongName = SongName_T.Text;
+                downloader.SongArtist = Artist_T.Text;
+                downloader.Show();
+            }
+            else
+            {
+                HandyControl.Controls.MessageBox.Show("请先播放歌曲后再点击下载按钮", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ContentControl_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
