@@ -57,9 +57,9 @@
                     </Border>
 
 
-                    <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Width="393" Foreground="#FF6E92EA"/>
+                    <TextBlock x:Name="SongName_T" Margin="111,17,0,0" Text="暂无歌曲播放..." TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" HorizontalAlignment="Left" Foreground="#FF6E92EA"/>
                     <TextBlock x:Name="Artist_T" HorizontalAlignment="Left" Margin="111,40,0,0" Text="咕咕咕咕" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF7CA5E8"/>
-                    <TextBlock x:Name="NowTime" Margin="0,37,133,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="189" TextAlignment="Right" Foreground="#FF7CA5E8"/>
+                    <TextBlock x:Name="NowTime" Margin="0,37,133,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" TextAlignment="Right" Foreground="#FF7CA5E8"/>
                     <TextBlock x:Name="Line_T" Margin="0,21,133,0" Text="线路1" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" HorizontalAlignment="Right" Width="44">
                         <TextBlock.Foreground>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -1,35 +1,26 @@
 ﻿using HttpJsonGet;
-using Mika_Music.Models;
-using Mika_Music.Models.Json;
+using Mika_Music.Song.Detail;
 using Mika_Music.SongInfo;
 using Mika_Music.SongList;
-using Mika_Music.Song.Detail;
+using Mika_Music.Views;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using System.Net;
-using Mika_Music.Views;
+using HandyControl.Controls;
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace Mika_Music
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private DispatcherTimer stimer = new DispatcherTimer();
@@ -68,7 +59,7 @@ namespace Mika_Music
 
         private void PackIconMaterial_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            string url = "https://soutwyy.vercel.app/user/detail?uid=32953014";
+            string url = "https://wyy.api.mikamika.ga/user/detail?uid=32953014";
 
             string getJson = HttpUitls.Get(url);
 
@@ -103,18 +94,35 @@ namespace Mika_Music
             Dispatcher.Invoke(new Action(() => slv.Items.Clear()));
             Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Visible));
 
-            string url="";
-            Dispatcher.Invoke(new Action(() => url = "https://soutwyy.vercel.app/search?keywords=" + SearchBox.Text));
+            string url = "";
+            Dispatcher.Invoke(new Action(() => url = "https://wyy.api.mikamika.ga/search?keywords=" + SearchBox.Text));
             string getJson = HttpUitls.Get(url);
             Models.Json.RootObject rt = JsonConvert.DeserializeObject<Models.Json.RootObject>(getJson);
 
             for (int i = 0; i < 10; i++)
             {
                 Thread.Sleep(200);
-                Dispatcher.Invoke(new Action(() => slv.Items.Add(new SongList.Emp
-                { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id })));
-            //listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
-        }
+                Dispatcher.Invoke(() =>
+                {
+                    try
+                    {
+                        if(rt.result.songs[i] != null)
+                        {
+                            slv.Items.Add(new SongList.Emp
+                            {
+                                SongName = rt.result.songs[i].name,
+                                Artist = rt.result.songs[i].artists[0].name,
+                                SongID = rt.result.songs[i].id
+                            });
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                });
+                //listView.Items.Add(new SongList.Emp { SongName = rt.result.songs[i].name, Artist = rt.result.songs[i].artists[0].name, SongID = rt.result.songs[i].id });
+            }
 
             Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Hidden));
         }
@@ -202,7 +210,7 @@ namespace Mika_Music
 
         private void PackIconEntypo_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if(PlayerController.Kind.ToString()== "ControllerPlay")
+            if (PlayerController.Kind.ToString() == "ControllerPlay")
             {
                 mediaElement1.Play();
                 PlayerController.Kind = MahApps.Metro.IconPacks.PackIconEntypoKind.ControllerPaus;
@@ -243,7 +251,7 @@ namespace Mika_Music
             {
                 try
                 {
-                    string url = "https://soutwyy.vercel.app/song/url?id=" + emp.SongID;
+                    string url = "https://wyy.api.mikamika.ga/song/url?id=" + emp.SongID;
                     string getJson = HttpUitls.Get(url);
                     SongInfoRoot rt = JsonConvert.DeserializeObject<SongInfoRoot>(getJson);
                     SongName_T.Text = emp.SongName;
@@ -270,13 +278,13 @@ namespace Mika_Music
                         //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                    string picurl = "https://soutwyy.vercel.app/song/detail?ids=" + emp.SongID;
+                    string picurl = "https://wyy.api.mikamika.ga/song/detail?ids=" + emp.SongID;
                     string picGetJson = HttpUitls.Get(picurl);
                     SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
 
                     SongPic.ImageSource = new BitmapImage(new Uri(picRT.songs[0].al.picUrl, UriKind.RelativeOrAbsolute));
 
-                    
+
                 }
                 catch (Exception ex)
                 {
