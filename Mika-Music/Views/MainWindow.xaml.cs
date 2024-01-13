@@ -59,7 +59,7 @@ namespace Mika_Music
 
         private void PackIconMaterial_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            string url = "https://wyy.api.mikamika.ga/user/detail?uid=32953014";
+            string url = "https://wyy01.sout.eu.org/user/detail?uid=32953014";
 
             string getJson = HttpUitls.Get(url);
 
@@ -95,7 +95,7 @@ namespace Mika_Music
             Dispatcher.Invoke(new Action(() => LoadingLine.Visibility = Visibility.Visible));
 
             string url = "";
-            Dispatcher.Invoke(new Action(() => url = "https://wyy.api.mikamika.ga/search?keywords=" + SearchBox.Text));
+            Dispatcher.Invoke(new Action(() => url = "https://wyy01.sout.eu.org/search?keywords=" + SearchBox.Text));
             string getJson = HttpUitls.Get(url);
             Models.Json.RootObject rt = JsonConvert.DeserializeObject<Models.Json.RootObject>(getJson);
 
@@ -251,7 +251,7 @@ namespace Mika_Music
             {
                 try
                 {
-                    string url = "https://wyy.api.mikamika.ga/song/url?id=" + emp.SongID;
+                    string url = "https://wyy01.sout.eu.org/song/url?id=" + emp.SongID;
                     string getJson = HttpUitls.Get(url);
                     SongInfoRoot rt = JsonConvert.DeserializeObject<SongInfoRoot>(getJson);
                     SongName_T.Text = emp.SongName;
@@ -278,7 +278,7 @@ namespace Mika_Music
                         //HandyControl.Controls.MessageBox.Show("该资源可能已经下架", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
-                    string picurl = "https://wyy.api.mikamika.ga/song/detail?ids=" + emp.SongID;
+                    string picurl = "https://wyy01.sout.eu.org/song/detail?ids=" + emp.SongID;
                     string picGetJson = HttpUitls.Get(picurl);
                     SongDetailRoot picRT = JsonConvert.DeserializeObject<SongDetailRoot>(picGetJson);
 

@@ -59,7 +59,7 @@ namespace Mika_Music.Views
             {
                 LoadingLine.Visibility = Visibility.Visible;
 
-                string url = "https://wyy.api.mikamika.ga/login/cellphone?phone=" + CellPhoneLogin.PhoneNumber_TB.Text + "&password=" + CellPhoneLogin.PassWord_TB.Password;
+                string url = "https://wyy01.sout.eu.org/login/cellphone?phone=" + CellPhoneLogin.PhoneNumber_TB.Text + "&password=" + CellPhoneLogin.PassWord_TB.Password;
 
                 string getJson = HttpUitls.Get(url);
 
@@ -99,7 +99,7 @@ namespace Mika_Music.Views
             {
                 LoadingLine.Visibility = Visibility.Visible;
 
-                string url = "https://wyy.api.mikamika.ga/login?email=" + EmailLogin.Email_TB.Text + "&password=" + EmailLogin.PassWord_TB.Password;
+                string url = "https://wyy01.sout.eu.org/login?email=" + EmailLogin.Email_TB.Text + "&password=" + EmailLogin.PassWord_TB.Password;
 
                 string getJson = HttpUitls.Get(url);
 

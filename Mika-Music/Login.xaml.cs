@@ -26,7 +26,7 @@ namespace Mika_Music.Views.Login
         {
             InitializeComponent();
             /*
-            string url = "https://wyy.api.mikamika.ga/login/status";
+            string url = "https://wyy01.sout.eu.org/login/status";
             string getJson = HttpUitls.Get(url);
             AccountData rt = JsonConvert.DeserializeObject<AccountData>(getJson);
             */
